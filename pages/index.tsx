@@ -2,8 +2,15 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Account } from '../components/Account'
+import { Connect } from '../components/Connect'
+import { NetworkSwitcher } from '../components/NetworkSwitcher'
+import { useIsMounted } from '../components/hooks/useIsMounted'
+import { useAccount } from 'wagmi'
 
 const Home: NextPage = () => {
+  const isMounted = useIsMounted()
+  const { data } = useAccount()
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -20,10 +27,14 @@ const Home: NextPage = () => {
         </h1>
 
         <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
+          <Connect />
+
+          {isMounted && data && (
+            <>
+              <Account />
+              <NetworkSwitcher />
+            </>
+          )}
         </p>
 
         <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
