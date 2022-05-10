@@ -2,7 +2,7 @@
 //Ethereum data type equivalent is commented beside the field
 
 
-//Loan Opportunity represents the type of funds used to creat the investment opporutunity
+//Loan Opportunity represents the type of funds used to create the investment opportunity
 
 export type LoanOpportunity = {
     id: number;	// uint 256 
@@ -15,5 +15,4 @@ export type LoanOpportunity = {
     erc20Price: number; // uint 256 - ? needs a oracle to find the price of erc20Amount ?
     rewards: number; // uint 256 - 1:100 - Represents a percentage
     yield: number; // uint 256 - represents percentage
-    investor: string; //address - represents the investor when they take up the opportunity
 }
