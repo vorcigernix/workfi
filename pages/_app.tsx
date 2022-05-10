@@ -10,7 +10,10 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
+
+
+import Layout from '../components/Layout'
 
 const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_ID as string
 const chains = defaultChains
@@ -66,7 +69,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <NextHead>
         <title>WorkFi</title>
       </NextHead>
+      <Layout>
         <Component {...pageProps} />
+      </Layout>
     </Provider>
   )
 }
