@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider client={client}>
       <NextHead>
-        <title>wagmi</title>
+        <title>WorkFi</title>
       </NextHead>
         <Component {...pageProps} />
     </Provider>
