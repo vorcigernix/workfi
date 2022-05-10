@@ -15,6 +15,7 @@ import { useState, Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import Document, { NextScript } from 'next/document'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Connect } from '../components/Connect'
 
 const user = {
   name: 'Tom Cook',
@@ -175,6 +176,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                                     )}
                                   </Menu.Item>
                                 ))}
+                                <Connect />
                               </Menu.Items>
                             </Transition>
                           </Menu>

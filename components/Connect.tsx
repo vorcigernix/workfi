@@ -15,10 +15,10 @@ export function Connect() {
   const { disconnect } = useDisconnect()
 
   return (
-    <div>
-      <div>
+    <>
+      <div className='grid' style={{gap:'5px'}}>
         {activeConnector && (
-          <button onClick={() => disconnect()} className="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">
+          <button onClick={() => disconnect()} className="text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg">
             Disconnect from {activeConnector.name}
           </button>
         )}
@@ -26,7 +26,7 @@ export function Connect() {
         {connectors
           .filter((x) => isMounted && x.ready && x.id !== activeConnector?.id)
           .map((x) => (
-            <button key={x.id} onClick={() => connect(x)} className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg w-52 m-5">
+            <button key={x.id} onClick={() => connect(x)} className="text-white bg-blue-500 border-0 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg">
               {x.name}
               {isConnecting && x.id === pendingConnector?.id && ' (connecting)'}
             </button>
@@ -34,6 +34,6 @@ export function Connect() {
       </div>
 
       {error && <div>{error.message}</div>}
-    </div>
+    </>
   )
 }

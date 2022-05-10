@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Account } from '../components/Account'
-import { Connect } from '../components/Connect'
 import { NetworkSwitcher } from '../components/NetworkSwitcher'
 import { useIsMounted } from '../components/hooks/useIsMounted'
 import { useAccount } from 'wagmi'
@@ -25,24 +24,6 @@ const Home: NextPage = () => {
             WorkFi
           </a>
         </h1>
-
-        <p className="mt-3 text-2xl">
-          <Connect />
-
-          {isMounted && data && (
-            <>
-              <Account />
-              <NetworkSwitcher />
-            </>
-          )}
-        </p>
-
-        <Link href="/page3" passHref>
-          <a className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600">
-            <h3 className="text-2xl font-bold">Contract call &rarr;</h3>
-            <p className="mt-4 text-xl">Linked to be prefetched</p>
-          </a>
-        </Link>
       </main>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
