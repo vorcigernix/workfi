@@ -57,7 +57,7 @@ const defaultLoanInvestor: LoanInvestor = {
 
 
 const createMockLoanInvestor = (overwrites: Partial<LoanInvestor> = {}) => ({
-    ...defaultBounty,
+    ...defaultLoanInvestor,
     ...overwrites
   });
 
