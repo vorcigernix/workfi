@@ -28,7 +28,7 @@ const user = {
   }
   
 type Props = {
-    children: JSX.Element[]
+    children: JSX.Element | JSX.Element[]
 }
 
 export default function Layout({ children }: Props) {
@@ -210,13 +210,9 @@ export default function Layout({ children }: Props) {
     </header>
     
     {/* End of header, start of body */}
-    <div>
-      <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="h-96 rounded-lg border-4 border-dashed border-gray-200">
-            {children}
-          </div>
-        </div>
+    <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+      <div className="px-4 py-6 sm:px-0">
+        {children}
       </div>
     </div>
   </div>
