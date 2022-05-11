@@ -16,21 +16,26 @@ export function Connect() {
 
   return (
     <>
-      <div className='grid' style={{gap:'5px'}}>
-        {activeConnector && (
-          <button onClick={() => disconnect()} className="text-white bg-pink-500 border-0 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg">
-            Disconnect from {activeConnector.name}
+      <div className="grid" style={{ gap: '5px' }}>
+        {activeConnector ? (
+          <button
+            onClick={() => disconnect()}
+            className="px-4 py-2 text-sm text-gray-700 flex flex-row hover:bg-gray-100"
+          >
+            Disconnect {activeConnector.name}
           </button>
-        )}
-
-        {connectors
-          .filter((x) => isMounted && x.ready && x.id !== activeConnector?.id)
-          .map((x) => (
-            <button key={x.id} onClick={() => connect(x)} className="text-white bg-blue-500 border-0 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg">
+        ) : (
+          connectors.map((x) => (
+            <button
+              key={x.id}
+              onClick={() => connect(x)}
+              className="px-4 py-2 text-sm text-gray-700 flex flex-row hover:bg-gray-100"
+            >
               {x.name}
               {isConnecting && x.id === pendingConnector?.id && ' (connecting)'}
             </button>
-          ))}
+          ))
+        )}
       </div>
 
       {error && <div>{error.message}</div>}

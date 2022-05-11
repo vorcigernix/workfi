@@ -46,7 +46,6 @@ const client = createClient({
           rpc: { [chain.id]: rpcUrl },
         },
       }),
-      new InjectedConnector({ chains, options: { name: 'Injected' } }),
     ]
   },
   provider({ chainId }) {
