@@ -1,12 +1,11 @@
+import BountyShortDisplay from '../../components/BountyShortDisplay';
 import CreateLoanOpportunity from '../../components/CreateLoanOpportunity';
 import { Bounty } from '../api/data/Bounty';
-// import { createMockBounty } from '../api/data/mockData'
 
 export default function Jobs({ bounty }: { bounty: Bounty}) {
 
     return (<div style={{display:'grid', gap:'15px'}}>
-        <h1 className='text-3xl font-bold'>{bounty.label}</h1>
-        <div>{bounty.description}</div>
+        <BountyShortDisplay bounty={bounty} />
         <hr />
         <CreateLoanOpportunity />
     </div>);
