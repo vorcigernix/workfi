@@ -3,8 +3,8 @@ import { NextPage } from 'next/types'
 //Opportunity Creation Form
 const CreateOpportunity: NextPage = () => {
   return (
-    <>
-      <section className="flex min-h-screen flex-col items-start justify-start py-2">
+    <div className="min-h-screen">
+      <section className="flex flex-col items-start justify-start py-2">
         <div>
           <h1 className="mb-2 text-3xl font-bold leading-9">
             Project Galaxy Core Contract Gas Optimizations
@@ -75,8 +75,85 @@ const CreateOpportunity: NextPage = () => {
           </div>
         </div>
       </section>
-      <section className="flex min-h-screen flex-col items-start justify-start py-2"></section>
-    </>
+
+      <section className="flex flex-col py-2">
+        <div className="mt-10 sm:mt-0">
+          <div className="md:grid md:grid-cols-2 md:gap-6">
+            <div className="mt-5 md:col-span-1 md:mt-0">
+              <form>
+                <div className="overflow-hidden">
+                  <div className="py-6">
+                    <div className="grid grid-cols-4 gap-6">
+                      <div className="col-span-6 sm:col-span-4">
+                        <label
+                          htmlFor="erc-20-address"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          ERC20 Token adress
+                        </label>
+                        <input
+                          type="text"
+                          name="erc-20-address"
+                          id="erc-20-address"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-4">
+                        <label
+                          htmlFor="erc-20-price"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          ERC20 Price (USD based)
+                        </label>
+                        <input
+                          type="number"
+                          name="erc-20-price"
+                          id="erc-20-price"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        />
+                      </div>
+
+                      <div className="col-span-6 sm:col-span-4">
+                        <label
+                          htmlFor="loan-incentive"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Loan incentive (APR in %)
+                        </label>
+                        <input
+                          type="number"
+                          name="loan-incentive"
+                          id="loan-incentive"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 text-right sm:px-6">
+                    <button
+                      type="submit"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    >
+                      Validate
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="mt-5 md:col-span-1">
+              <div className="rounded-md bg-white p-5 shadow-md sm:m-5">
+                <h3 className="rounded-full bg-purple-200 p-2 text-center text-sm font-medium leading-6 text-purple-400">
+                  Project Galaxy Core Contract Gas Optimizations
+                </h3>
+                <p className="mt-3 text-sm text-gray-600">
+                  Loan opportunity: $3000
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
 
