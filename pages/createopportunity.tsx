@@ -9,7 +9,7 @@ const CreateOpportunity: NextPage = () => {
           <h1 className="mb-2 text-3xl font-bold leading-9">
             Project Galaxy Core Contract Gas Optimizations
           </h1>
-          <div className="flex flex-row gap-8 text-sm font-normal leading-5 text-gray-500">
+          <div className="mt-5 flex flex-col gap-8 text-sm font-normal leading-5 text-gray-500 md:flex-row">
             <span className="flex flex-row items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const CreateOpportunity: NextPage = () => {
                           type="text"
                           name="erc-20-address"
                           id="erc-20-address"
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                         />
                       </div>
                       <div className="col-span-6 sm:col-span-4">
@@ -109,7 +109,7 @@ const CreateOpportunity: NextPage = () => {
                           type="number"
                           name="erc-20-price"
                           id="erc-20-price"
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                         />
                       </div>
 
@@ -124,7 +124,7 @@ const CreateOpportunity: NextPage = () => {
                           type="number"
                           name="loan-incentive"
                           id="loan-incentive"
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                         />
                       </div>
                     </div>
@@ -132,7 +132,7 @@ const CreateOpportunity: NextPage = () => {
                   <div className="px-4 py-3 text-right sm:px-6">
                     <button
                       type="submit"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
                     >
                       Validate
                     </button>
@@ -141,14 +141,49 @@ const CreateOpportunity: NextPage = () => {
               </form>
             </div>
             <div className="mt-5 md:col-span-1">
-              <div className="rounded-md bg-white p-5 shadow-md sm:m-5">
-                <h3 className="rounded-full bg-purple-200 p-2 text-center text-sm font-medium leading-6 text-purple-400">
+              <div className="rounded-md bg-white p-5 text-gray-700 shadow-md sm:m-5 md:mx-12 md:px-12">
+                <h3 className="hidden overflow-hidden rounded-full bg-purple-200 p-2 text-center text-xs font-medium leading-6 text-purple-400 md:mx-12">
                   Project Galaxy Core Contract Gas Optimizations
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
-                  Loan opportunity: $3000
-                </p>
+                <div className="mt-3 flex flex-row items-center justify-center text-base  text-gray-600">
+                  <span>Bounty</span>
+                  <span className=" ml-4 font-bold">$3000</span>
+                </div>
+                <div className="mt-3 flex flex-row items-center justify-around text-base text-gray-600">
+                  <img src="./dai.svg" alt="dai" className="m-4 h-6 w-6" />
+                  <img
+                    src="./ethereum.svg"
+                    alt="ethereum"
+                    className="m-4 h-6 w-6"
+                  />
+                </div>
+                <div className="w-full rounded-full bg-gray-200 font-bold">
+                  <div className="w-1/4 rounded-l-full bg-purple-600 p-0.5 text-center text-xs leading-none text-purple-100">
+                    25%
+                  </div>
+                </div>
+                <div className="mt-3 flex flex-row items-center justify-around text-sm text-gray-600">
+                  <span className="w-40 text-center">40 days, 100% left</span>
+                  <span className="w-40  rounded-full bg-slate-300 px-4 py-2 text-center font-bold opacity-50">
+                    Not started
+                  </span>
+                </div>
+                <div className="mt-6 flex flex-row items-center justify-around text-sm text-purple-600">
+                  <span className="w-40 text-center">
+                    Loan opportunity: $2400
+                  </span>
+                  <span className="w-40 text-center">APR: 40%</span>
+                </div>
+
+                <div className="mt-6 hidden flex-row items-center justify-around text-sm">
+                  <button className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                    Sponsor opportunity
+                  </button>
+                </div>
               </div>
+            </div>
+            <div className="mt-12 md:col-span-2">
+              {/* so there might be a button */}
             </div>
           </div>
         </div>

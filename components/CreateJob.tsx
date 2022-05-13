@@ -93,7 +93,7 @@ export default function CreateJob() {
       <button
         type="button"
         onClick={handlePostJobEvent}
-        className="rounded bg-blue-500 py-2 text-lg text-white hover:bg-pink-600 focus:outline-none"
+        className="rounded bg-purple-500 py-2 text-lg text-white hover:bg-pink-600 focus:outline-none"
         style={{ justifySelf: 'center', width: '80%' }}
       >
         Post Job

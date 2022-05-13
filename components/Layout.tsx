@@ -26,7 +26,7 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className="min-h-full bg-slate-100">
+    <div className="min-h-full bg-violet-50">
       <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
           <>
