@@ -41,7 +41,7 @@ const CreateOpportunity: NextPage = () => {
           <h1 className="mb-2 text-3xl font-bold leading-9">
             Project Galaxy Core Contract Gas Optimizations
           </h1>
-          <div className="mt-5 flex flex-col gap-8 text-sm font-normal leading-5 text-gray-500 md:flex-row">
+          <div className="mt-5 flex flex-col gap-8 text-sm font-normal leading-5 text-stone-600 md:flex-row">
             <span className="flex flex-row items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,32 +115,24 @@ const CreateOpportunity: NextPage = () => {
               <div className="overflow-hidden">
                 <div className="py-6">
                   <div className="grid grid-cols-4 gap-6">
-                    {/* <div className="col-span-6 sm:col-span-4">
+                    <div className="col-span-6">
+                      <h1 className="text-2xl font-bold leading-7 text-stone-600">
+                        Set your stable coin allocation, and provide you token
+                        and incentive for the period
+                      </h1>
+                    </div>
+                    <div className="col-span-6 sm:col-span-4">
                       <label
                         htmlFor="erc-20-ratio"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-stone-600"
                       >
-                        Provided Stablecoin ratio (%)
-                      </label>
-                      <input
-                        type="number"
-                        value={opportunity.stableRatio}
-                        placeholder="Provided Stablecoin ratio (%)"
-                        onChange={(e) => setRatio(+e.target.value)}
-                        name="erc-20-ratio"
-                        id="erc-20-ratio"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
-                      />
-                    </div> */}
-                    <div className="col-span-6 sm:col-span-4">
-                      <label htmlFor="erc-20-ratio" className="block text-sm font-medium text-gray-700">
-                      Provided Stablecoin ratio {opportunity.stableRatio}%
+                        Provided Stablecoin ratio {opportunity.stableRatio}%
                       </label>
                       <input
                         type="range"
                         value={opportunity.stableRatio}
                         onChange={(e) => setRatio(+e.target.value)}
-                        className="form-range mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="form-range mt-1 block w-full rounded-md border-stone-100 focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                         min="0"
                         max="100"
                         id="erc-20-ratio"
@@ -149,7 +141,7 @@ const CreateOpportunity: NextPage = () => {
                     <div className="col-span-6 sm:col-span-4">
                       <label
                         htmlFor="erc-20-address"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-stone-600"
                       >
                         ERC20 Token adress
                       </label>
@@ -164,13 +156,13 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="erc-20-address"
                         id="erc-20-address"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="mt-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-4">
                       <label
                         htmlFor="erc-20-price"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-stone-600"
                       >
                         ERC20 Price (USD based)
                       </label>
@@ -185,14 +177,14 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="erc-20-price"
                         id="erc-20-price"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="mt-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                       />
                     </div>
 
                     <div className="col-span-6 sm:col-span-4">
                       <label
                         htmlFor="loan-incentive"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-stone-600"
                       >
                         Loan incentive (APR in %)
                       </label>
@@ -207,7 +199,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="loan-incentive"
                         id="loan-incentive"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="mt-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -224,15 +216,15 @@ const CreateOpportunity: NextPage = () => {
               </div>
             </div>
             <div className="mt-5 md:col-span-1">
-              <div className="rounded-md bg-white p-5 text-gray-700 shadow-md sm:m-5 md:mx-12 md:px-12">
+              <div className="rounded-md bg-white p-5 text-stone-600 shadow-md sm:m-5 md:mx-12 md:px-12">
                 <h3 className="hidden overflow-hidden rounded-full bg-purple-200 p-2 text-center text-xs font-medium leading-6 text-purple-400 md:mx-12">
                   Project Galaxy Core Contract Gas Optimizations
                 </h3>
-                <div className="mt-3 flex flex-row items-center justify-center text-base  text-gray-600">
+                <div className="mt-3 flex flex-row items-center justify-center text-base  text-stone-600">
                   <span>Bounty</span>
                   <span className=" ml-4 font-bold">$3000</span>
                 </div>
-                <div className="mt-3 flex flex-row items-center justify-around text-base text-gray-600">
+                <div className="mt-3 flex flex-row items-center justify-around text-base text-stone-600">
                   <img src="./dai.svg" alt="dai" className="m-4 h-6 w-6" />
                   <img
                     src="./ethereum.svg"
@@ -240,12 +232,12 @@ const CreateOpportunity: NextPage = () => {
                     className="m-4 h-6 w-6"
                   />
                 </div>
-                <div className="w-full rounded-full bg-gray-200 font-bold">
+                <div className="w-full rounded-full bg-stone-100 font-bold">
                   <div className="w-1/4 rounded-l-full bg-purple-600 p-0.5 text-center text-xs leading-none text-purple-100">
                     25%
                   </div>
                 </div>
-                <div className="mt-3 flex flex-row items-center justify-around text-sm text-gray-600">
+                <div className="mt-3 flex flex-row items-center justify-around text-sm text-stone-600">
                   <span className="w-40 text-center">40 days, 100% left</span>
                   <span className="w-40  rounded-full bg-slate-300 px-4 py-2 text-center font-bold opacity-50">
                     Not started

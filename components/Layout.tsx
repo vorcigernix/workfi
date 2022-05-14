@@ -27,7 +27,7 @@ type Props = {
 export default function Layout({ children }: Props) {
   return (
     <div className="min-h-full bg-violet-50">
-      <Disclosure as="nav" className="bg-gray-800">
+      <Disclosure as="nav" className="bg-stone-700">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -58,8 +58,8 @@ export default function Layout({ children }: Props) {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              ? 'bg-stone-700 text-white'
+                              : 'text-stone-100 hover:bg-stone-600 hover:text-white',
                             'rounded-md px-3 py-2 text-sm font-medium'
                           )}
                           aria-current={item.current ? 'page' : undefined}
@@ -74,7 +74,7 @@ export default function Layout({ children }: Props) {
                   <div className="ml-4 flex items-center md:ml-6">
                     <button
                       type="button"
-                      className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      className="rounded-full bg-stone-700 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-700"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -83,7 +83,7 @@ export default function Layout({ children }: Props) {
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3">
                       <div>
-                        <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 p-1 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <Menu.Button className="flex max-w-xs items-center rounded-full bg-stone-700 p-1 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-700">
                           <span className="sr-only">Open user menu</span>
                           <UserCircleIcon
                             className="h-6 w-6  text-gray-400"
@@ -107,8 +107,8 @@ export default function Layout({ children }: Props) {
                                 <a
                                   href={item.href}
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
+                                    active ? 'bg-stone-100' : '',
+                                    'block px-4 py-2 text-sm text-stone-600'
                                   )}
                                 >
                                   {item.name}
@@ -124,7 +124,7 @@ export default function Layout({ children }: Props) {
                 </div>
                 <div className="-mr-2 flex md:hidden">
                   {/* Mobile menu button */}
-                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-stone-700 p-2 text-gray-400 hover:bg-stone-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-700">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -145,8 +145,8 @@ export default function Layout({ children }: Props) {
                     href={item.href}
                     className={classNames(
                       item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        ? 'bg-stone-700 text-white'
+                        : 'text-stone-100 hover:bg-stone-600 hover:text-white',
                       'block rounded-md px-3 py-2 text-base font-medium'
                     )}
                     aria-current={item.current ? 'page' : undefined}
@@ -155,7 +155,7 @@ export default function Layout({ children }: Props) {
                   </Disclosure.Button>
                 ))}
               </div>
-              <div className="border-t border-gray-700 pt-4 pb-3">
+              <div className="border-t border-stone-600 pt-4 pb-3">
                 <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
                     <UserCircleIcon className="h-6 w-6" />
@@ -163,7 +163,7 @@ export default function Layout({ children }: Props) {
                   <div className="ml-3"></div>
                   <button
                     type="button"
-                    className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="ml-auto flex-shrink-0 rounded-full bg-stone-700 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-700"
                   >
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -175,7 +175,7 @@ export default function Layout({ children }: Props) {
                       key={item.name}
                       as="a"
                       href={item.href}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-stone-600 hover:text-white"
                     >
                       {item.name}
                     </Disclosure.Button>
@@ -189,7 +189,7 @@ export default function Layout({ children }: Props) {
 
       <header className="bg-white shadow">
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-stone-700">Dashboard</h1>
         </div>
       </header>
 

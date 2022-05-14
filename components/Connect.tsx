@@ -20,7 +20,7 @@ export function Connect() {
         {activeConnector ? (
           <button
             onClick={() => disconnect()}
-            className="px-4 py-2 text-sm text-gray-700 flex flex-row hover:bg-gray-100"
+            className="px-4 py-2 text-sm text-stone-600 flex flex-row hover:bg-stone-100"
           >
             Disconnect {activeConnector.name}
           </button>
@@ -29,7 +29,7 @@ export function Connect() {
             <button
               key={x.id}
               onClick={() => connect(x)}
-              className="px-4 py-2 text-sm text-gray-700 flex flex-row hover:bg-gray-100"
+              className="px-4 py-2 text-sm text-stone-600 flex flex-row hover:bg-stone-100"
             >
               {x.name}
               {isConnecting && x.id === pendingConnector?.id && ' (connecting)'}
