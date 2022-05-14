@@ -156,7 +156,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="erc-20-address"
                         id="erc-20-address"
-                        className="mt-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-4">
@@ -177,7 +177,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="erc-20-price"
                         id="erc-20-price"
-                        className="mt-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                       />
                     </div>
 
@@ -199,7 +199,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="loan-incentive"
                         id="loan-incentive"
-                        className="mt-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
                       />
                     </div>
                   </div>
