@@ -1,7 +1,39 @@
-import { NextPage } from 'next/types'
+import type { NextPage } from 'next/types'
+import type { LoanOpportunity } from './api/data/LoanOpportunity'
+import { defaultBounty } from './api/data/mockData'
+import { useState } from 'react'
 
 //Opportunity Creation Form
+// This page is used to create a new opportunity, bounty data are mocked from the mockData.ts file
 const CreateOpportunity: NextPage = () => {
+  const [opportunity, setOpportunity] = useState<LoanOpportunity>({
+    idBounty: defaultBounty.id,
+    bounty: defaultBounty.bounty,
+    stableAddress: '',
+    stableAmount: 0,
+    erc20Address: '',
+    erc20Amount: 0,
+    erc20Price: 0,
+    rewards: 0,
+    yield: 0,
+    stableRatio: 20,
+  } as LoanOpportunity)
+
+  function setRatio(ratio: number) {
+    if (ratio > 0) {
+      setOpportunity({
+        ...opportunity,
+        stableRatio: ratio,
+        stableAmount: opportunity.bounty - opportunity.bounty * (ratio / 100),
+        erc20Amount: opportunity.bounty * (ratio / 100),
+      })
+    }
+  }
+
+  function handlePostOpportunityEvent() {
+    console.log('Opportunity is posted', opportunity)
+  }
+
   return (
     <div className="min-h-screen">
       <section className="flex flex-col items-start justify-start py-2">
@@ -80,65 +112,116 @@ const CreateOpportunity: NextPage = () => {
         <div className="mt-10 sm:mt-0">
           <div className="md:grid md:grid-cols-2 md:gap-6">
             <div className="mt-5 md:col-span-1 md:mt-0">
-              <form>
-                <div className="overflow-hidden">
-                  <div className="py-6">
-                    <div className="grid grid-cols-4 gap-6">
-                      <div className="col-span-6 sm:col-span-4">
-                        <label
-                          htmlFor="erc-20-address"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          ERC20 Token adress
-                        </label>
-                        <input
-                          type="text"
-                          name="erc-20-address"
-                          id="erc-20-address"
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
-                        />
-                      </div>
-                      <div className="col-span-6 sm:col-span-4">
-                        <label
-                          htmlFor="erc-20-price"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          ERC20 Price (USD based)
-                        </label>
-                        <input
-                          type="number"
-                          name="erc-20-price"
-                          id="erc-20-price"
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
-                        />
-                      </div>
+              <div className="overflow-hidden">
+                <div className="py-6">
+                  <div className="grid grid-cols-4 gap-6">
+                    {/* <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="erc-20-ratio"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Provided Stablecoin ratio (%)
+                      </label>
+                      <input
+                        type="number"
+                        value={opportunity.stableRatio}
+                        placeholder="Provided Stablecoin ratio (%)"
+                        onChange={(e) => setRatio(+e.target.value)}
+                        name="erc-20-ratio"
+                        id="erc-20-ratio"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                      />
+                    </div> */}
+                    <div className="col-span-6 sm:col-span-4">
+                      <label htmlFor="erc-20-ratio" className="block text-sm font-medium text-gray-700">
+                      Provided Stablecoin ratio {opportunity.stableRatio}%
+                      </label>
+                      <input
+                        type="range"
+                        value={opportunity.stableRatio}
+                        onChange={(e) => setRatio(+e.target.value)}
+                        className="form-range mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        min="0"
+                        max="100"
+                        id="erc-20-ratio"
+                      />
+                    </div>
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="erc-20-address"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        ERC20 Token adress
+                      </label>
+                      <input
+                        type="text"
+                        value={opportunity.erc20Address}
+                        onChange={(e) =>
+                          setOpportunity({
+                            ...opportunity,
+                            erc20Address: e.target.value,
+                          })
+                        }
+                        name="erc-20-address"
+                        id="erc-20-address"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                      />
+                    </div>
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="erc-20-price"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        ERC20 Price (USD based)
+                      </label>
+                      <input
+                        type="number"
+                        value={opportunity.erc20Price}
+                        onChange={(e) =>
+                          setOpportunity({
+                            ...opportunity,
+                            erc20Price: +e.target.value,
+                          })
+                        }
+                        name="erc-20-price"
+                        id="erc-20-price"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                      />
+                    </div>
 
-                      <div className="col-span-6 sm:col-span-4">
-                        <label
-                          htmlFor="loan-incentive"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Loan incentive (APR in %)
-                        </label>
-                        <input
-                          type="number"
-                          name="loan-incentive"
-                          id="loan-incentive"
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
-                        />
-                      </div>
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="loan-incentive"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Loan incentive (APR in %)
+                      </label>
+                      <input
+                        type="number"
+                        value={opportunity.yield}
+                        onChange={(e) =>
+                          setOpportunity({
+                            ...opportunity,
+                            yield: +e.target.value,
+                          })
+                        }
+                        name="loan-incentive"
+                        id="loan-incentive"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                      />
                     </div>
                   </div>
-                  <div className="px-4 py-3 text-right sm:px-6">
-                    <button
-                      type="submit"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-                    >
-                      Validate
-                    </button>
-                  </div>
                 </div>
-              </form>
+                <div className="px-4 py-3 text-right sm:px-6">
+                  <button
+                    type="button"
+                    onClick={handlePostOpportunityEvent}
+                    className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                  >
+                    Validate
+                  </button>
+                </div>
+              </div>
             </div>
             <div className="mt-5 md:col-span-1">
               <div className="rounded-md bg-white p-5 text-gray-700 shadow-md sm:m-5 md:mx-12 md:px-12">

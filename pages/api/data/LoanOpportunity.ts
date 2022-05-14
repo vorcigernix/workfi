@@ -15,4 +15,5 @@ export type LoanOpportunity = {
     erc20Price: number; // uint 256 - ? needs a oracle to find the price of erc20Amount ?
     rewards: number; // uint 256 - 1:100 - Represents a percentage
     yield: number; // uint 256 - represents percentage
+    stableRatio: number; // uint 256 - represents the ratio of the stablecoin to the native token
 }
