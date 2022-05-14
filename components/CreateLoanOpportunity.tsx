@@ -17,7 +17,8 @@ export default function CreateLoanOpportunity() {
     erc20Amount,
     erc20Price,
     rewards: 0,
-    yield: incentive
+    yield: incentive,
+    stableRatio: 0,
   }
 
   function handlePostJobEvent(){
