@@ -167,7 +167,7 @@ const CreateOpportunity: NextPage = () => {
                         ERC20 Price (USD based)
                       </label>
                       <input
-                        type="number"
+                        type="text"
                         value={opportunity.erc20Price}
                         onChange={(e) =>
                           setOpportunity({
@@ -189,7 +189,7 @@ const CreateOpportunity: NextPage = () => {
                         Loan incentive (APR in %)
                       </label>
                       <input
-                        type="number"
+                        type="text"
                         value={opportunity.yield}
                         onChange={(e) =>
                           setOpportunity({
