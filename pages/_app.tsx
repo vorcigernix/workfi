@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ethers } from 'ethers'
 import { ownerAddress } from '../config'
-import { providers } from 'ethers'
+import { getDefaultProvider, providers } from 'ethers'
 import NextHead from 'next/head'
 
 import { Provider, chain, createClient, defaultChains } from 'wagmi'
@@ -10,8 +10,6 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { useState, Fragment } from 'react'
-
 
 import Layout from '../components/Layout'
 
@@ -62,15 +60,28 @@ const client = createClient({
   },
 })
 
+import { Rinkeby, ArbitrumRinkeby, DAppProvider, Config } from '@usedapp/core'
+
+const config: Config = {
+  readOnlyChainId: Rinkeby.chainId,
+  readOnlyUrls: {
+    [Rinkeby.chainId]: getDefaultProvider('rinkeby'),
+    [ArbitrumRinkeby.chainId]: 'https://rinkeby.arbitrum.io/rpc',
+    [431113]: new ethers.providers.JsonRpcProvider(),     // See '../hardhat.config'
+  },
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider client={client}>
-      <NextHead>
-        <title>WorkFi</title>
-      </NextHead>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <DAppProvider config={config}>
+        <NextHead>
+          <title>WorkFi</title>
+        </NextHead>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </DAppProvider>
     </Provider>
   )
 }
