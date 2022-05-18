@@ -48,18 +48,38 @@ const ManageMySponsorship: NextPage = () => {
         status:	Status.Progress
     }
   ]);
-  let a = [1,2,3];
-  a.map(x => x+1)
 
   return (
     <>
-        <header className='bg-white rounded-full my-5 rounded-lg shadow-lg flex justify-between items-center'>
-            <div className=' p-10'>
-            <div className='font-bold text-xl'>Dear recruiter</div>
-            <div className='text-gray-500'>Monitor your open sponsorships or create a new one</div>
+        <div className='bg-white rounded-full my-5 rounded-lg shadow-lg flex justify-between items-center'>
+            <div className='p-10'>
+                <div className='font-bold text-xl'>Dear recruiter</div>
+                <div className='text-gray-500'>Monitor your open sponsorships or create a new one</div>
             </div>
-            <img src='workfi 3.png' alt='' className='object-cover ' />
-        </header>
+            <img src='workfi 3.png' alt='' />
+        </div>
+        <div className='bg-white rounded-full my-5 py-5 px-20 rounded-lg shadow-lg grid'>
+            <div className='font-bold text-xl' style={{marginTop: '1rem'}}>Easily create a sponsorship for your bounties</div>
+            <div className='text-gray-500' style={{marginBottom: '2rem'}}>Ise a partner job and get your sponsorship oppurtunity running now</div>
+            <div className='grid grid-cols-3 gap-6'>
+                <div className='grid'>
+                    <span className='font-bold'>1. Choose a job board</span>
+                    <span className='text-gray-500'>WorkFi works with the most trustfull onchian job boards.</span>
+                    <div className='flex gap-3'>
+                        <img src='image 5.png' className='w-11 h-10' /> 
+                        <img src='image 6.png' className='w-11 h-10' /> 
+                        <img src='image 7.png' className='w-11 h-10' /></div>
+                </div>
+                <div className='grid'>
+                    <span className='font-bold'>2. Create your sponsorship</span>
+                    <span className='text-gray-500'>Simply indicate your ERC20 tokens, it's price and the incentive you're willing to give to your investors.</span>
+                </div>
+                <div className='grid'>
+                    <span className='font-bold'>3. And that's it</span>
+                    <span className='text-gray-500'>Manage your bounties in the job board, all the payment flow with your workers and your investors is automated.</span>
+                </div>
+            </div>
+        </div>
         <div className='grid grid-cols-3 gap-4'>
             {sponsorships.map((bounty: Bounty) =>
                 <BountyInSponsorList bounty={bounty} />
@@ -75,7 +95,6 @@ function getStatus(status: Status){
     switch (status) {
         case Status.PaymentCompleted:
             return 'Delivered'
-            break;
         case Status.PaymentRequested:
             return 'payment requested'
         case Status.Progress:
