@@ -5,6 +5,7 @@ import {
   useProvider,
   useContractWrite,
   useContractRead,
+  useNetwork,
 } from 'wagmi'
 import { GetServerSideProps } from 'next'
 import { ethers } from 'ethers'
@@ -20,6 +21,7 @@ interface Props {
 
 const CallContract: NextPage<Props> = ({ message }: { message: string }) => {
   const [greeting, setGreeting] = useState(message)
+  const network = useNetwork()
   const { write, data, error, isLoading, isError, isSuccess } =
     useContractWrite(
       {
@@ -31,7 +33,7 @@ const CallContract: NextPage<Props> = ({ message }: { message: string }) => {
 
   return (
     <div className="grid items-center justify-center py-2">
-      {greeting}
+      {greeting} on {network.activeChain?.name}
       <div
         className="grid"
         style={{ gridTemplateColumns: '1fr auto', gap: '5px' }}

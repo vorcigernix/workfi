@@ -2,6 +2,7 @@ import type { NextPage } from 'next/types'
 import type { LoanOpportunity } from './api/data/LoanOpportunity'
 import { defaultBounty } from './api/data/mockData'
 import { useState } from 'react'
+import { Approve } from '../components/Approve'
 
 //Opportunity Creation Form
 // This page is used to create a new opportunity, bounty data are mocked from the mockData.ts file
@@ -258,7 +259,7 @@ const CreateOpportunity: NextPage = () => {
               </div>
             </div>
             <div className="mt-12 md:col-span-2">
-              {/* so there might be a button */}
+              <Approve message={"ERC 20"} maxcost={2000} erc20={1800} dai={200} lock={20} />
             </div>
           </div>
         </div>
