@@ -63,48 +63,50 @@ export default function Layout({ children }: Props) {
 							</svg>
 						</button>
 					) : (
-						<div className="flex justify-center">
-							<div>
-								<div className="dropdown relative">
-									<button
-										className="mt-6 inline-flex items-center justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 font-bold text-white shadow-sm hover:bg-emerald-700 focus:outline-none md:mt-0"
-										type="button"
-										id="dropdownMenuButton1"
-										data-bs-toggle="dropdown"
-										onClick={() => setConnectDialog(!connectDialog)}
-										aria-expanded="false">
-										Connect
-										<svg
-											fill="none"
-											stroke="currentColor"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											className="ml-1 h-4 w-4"
-											viewBox="0 0 24 24">
-											<path d="M5 12h14M12 5l7 7-7 7"></path>
-										</svg>
-									</button>
+						isMounted && (
+							<div className="flex justify-center">
+								<div>
+									<div className="dropdown relative">
+										<button
+											className="mt-6 inline-flex items-center justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 font-bold text-white shadow-sm hover:bg-emerald-700 focus:outline-none md:mt-0"
+											type="button"
+											id="dropdownMenuButton1"
+											data-bs-toggle="dropdown"
+											onClick={() => setConnectDialog(!connectDialog)}
+											aria-expanded="false">
+											Connect
+											<svg
+												fill="none"
+												stroke="currentColor"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth="2"
+												className="ml-1 h-4 w-4"
+												viewBox="0 0 24 24">
+												<path d="M5 12h14M12 5l7 7-7 7"></path>
+											</svg>
+										</button>
 
-									<ul
-										className="absolute z-50 float-left m-0 mt-1 min-w-max list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg"
-										aria-labelledby="dropdownMenuButton1"
-										hidden={!connectDialog}>
-										{connectors.map((x) => (
-											<li key={`${x.id}li`}>
-												<button
-													key={x.id}
-													onClick={() => connect(x)}
-													className="block w-full whitespace-nowrap  bg-transparent py-2 px-4 text-sm font-normal text-gray-700 hover:bg-gray-100">
-													{x.name}
-													{isConnecting && x.id === pendingConnector?.id && ' (connecting)'}
-												</button>
-											</li>
-										))}
-									</ul>
+										<ul
+											className="absolute z-50 float-left m-0 mt-1 min-w-max list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg"
+											aria-labelledby="dropdownMenuButton1"
+											hidden={!connectDialog}>
+											{connectors.map((x) => (
+												<li key={`${x.id}li`}>
+													<button
+														key={x.id}
+														onClick={() => connect(x)}
+														className="block w-full whitespace-nowrap  bg-transparent py-2 px-4 text-sm font-normal text-gray-700 hover:bg-gray-100">
+														{x.name}
+														{isConnecting && x.id === pendingConnector?.id && ' (connecting)'}
+													</button>
+												</li>
+											))}
+										</ul>
+									</div>
 								</div>
 							</div>
-						</div>
+						)
 					)}
 				</div>
 			</header>

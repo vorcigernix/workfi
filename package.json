@@ -15,6 +15,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@openzeppelin/contracts": "^4.6.0",
+    "@superfluid-finance/ethereum-contracts": "^1.2.2",
     "@tailwindcss/forms": "^0.5.1",
     "chai": "^4.3.6",
     "ethereum-waffle": "^3.4.4",
