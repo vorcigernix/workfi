@@ -52,7 +52,7 @@ const ManageMySponsorship: NextPage = () => {
   return (
     <>
       <div className="my-5  flex items-center justify-between rounded-lg bg-white shadow-lg">
-        <div className="p-10">
+        <div className="py-10 px-20">
           <div className="text-xl font-bold">Dear recruiter</div>
           <div className="text-stone-500">
             Monitor your open sponsorships or create a new one

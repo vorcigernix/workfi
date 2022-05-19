@@ -3,6 +3,8 @@ import type { LoanOpportunity } from './api/data/LoanOpportunity';
 import { defaultBounty } from './api/data/mockData';
 import { useState } from 'react';
 import { Approve } from '../components/Approve';
+import DummyWorkFi from '../artifacts/contracts/DummyWorkFi.sol/DummyWorkFi.json';
+import { useContractWrite } from 'wagmi';
 
 //Opportunity Creation Form
 // This page is used to create a new opportunity, bounty data are mocked from the mockData.ts file
@@ -31,8 +33,22 @@ const CreateOpportunity: NextPage = () => {
 		}
 	}
 
+  const { write, data, error, isLoading, isError, isSuccess } = useContractWrite(
+		{
+			addressOrName: '0xB043B4BD5f166D8939417E895f0A22D25b7D6077',
+			contractInterface: DummyWorkFi.abi,
+		},
+		'createBounty'
+	);
+
 	function handlePostOpportunityEvent() {
-		console.log('Opportunity is posted', opportunity);
+    const stablePay = opportunity.stableAmount;
+    const nativePay = opportunity.erc20Amount;
+    const exchangeRate = opportunity.erc20Price;
+    const nativeToken = opportunity.erc20Address;
+    let deadline = new Date();
+    deadline.setDate(deadline.getDate() + deadline.getDate() * 0.15)
+    write({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
 	}
 
 	return (
@@ -178,6 +194,10 @@ const CreateOpportunity: NextPage = () => {
 									>
 										Validate
 									</button>
+								</div>
+								<div className="px-4 py-3 text-right sm:px-6">
+									{isError && <div>{error?.message}</div>}
+									{isSuccess && <div><a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>See transaction</a></div>}
 								</div>
 							</div>
 						</div>
