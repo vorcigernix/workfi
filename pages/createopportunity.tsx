@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Approve } from '../components/Approve';
 import DummyWorkFi from '../artifacts/contracts/DummyWorkFi.sol/DummyWorkFi.json';
 import { useContractWrite } from 'wagmi';
+import { contractAddressMumbai } from '../config';
 
 //Opportunity Creation Form
 // This page is used to create a new opportunity, bounty data are mocked from the mockData.ts file
@@ -35,7 +36,7 @@ const CreateOpportunity: NextPage = () => {
 
   const { write, data, error, isLoading, isError, isSuccess } = useContractWrite(
 		{
-			addressOrName: '0xB043B4BD5f166D8939417E895f0A22D25b7D6077',
+			addressOrName: contractAddressMumbai,
 			contractInterface: DummyWorkFi.abi,
 		},
 		'createBounty'
@@ -47,7 +48,7 @@ const CreateOpportunity: NextPage = () => {
     const exchangeRate = opportunity.erc20Price;
     const nativeToken = opportunity.erc20Address;
     let deadline = new Date();
-    deadline.setDate(deadline.getDate() + deadline.getDate() * 0.15)
+    deadline.setDate(deadline.getDate() + 40*24*60*60*1000 * 0.15)	// 40 days
     write({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
 	}
 
