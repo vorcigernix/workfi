@@ -33,7 +33,7 @@ export default function CreateLoanOpportunity() {
         <label>Token price (USD based)</label><input type='number' value={erc20Price} onChange={e=>setErc20Price(parseInt(e.target.value))} className='border' />
         <label>Loan incentive (APR %)</label><input type='number' value={erc20Price} onChange={e=>setIncentive(parseInt(e.target.value))} className='border' />
       </div>
-      <button type='button' onClick={handlePostJobEvent} className='text-white bg-purple-500 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg' style={{justifySelf:'center', width:'80%'}}>Post Opportunity</button>
+      <button type='button' onClick={handlePostJobEvent} className='text-white bg-emerald-500 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg' style={{justifySelf:'center', width:'80%'}}>Post Opportunity</button>
     </div>
   )
 }

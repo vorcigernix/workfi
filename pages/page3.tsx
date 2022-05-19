@@ -38,7 +38,7 @@ const CallContract: NextPage<Props> = ({ message }: {message:string }) => {
       <div className='grid' style={{gridTemplateColumns:'1fr auto', gap: '5px'}}>
         <hr style={{gridColumn:'1/3'}} />
         <span>New greeting:</span><input type='text' value={newGreeting} onChange={handleNewGreetingChange} className='rounded border' />
-        <button type='button' onClick={setNewGreetingHandler} className='text-white bg-blue-500 border-0 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg' style={{gridColumn:'1/3'}}>Set Greeting</button>
+        <button type='button' onClick={setNewGreetingHandler} className='text-white bg-emerald-500 border-0 py-2 focus:outline-none hover:bg-pink-600 rounded text-lg' style={{gridColumn:'1/3'}}>Set Greeting</button>
       </div>
     </div>
   )

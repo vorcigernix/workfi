@@ -131,9 +131,10 @@ const CreateOpportunity: NextPage = () => {
                       </label>
                       <input
                         type="range"
+                        
                         value={opportunity.stableRatio}
                         onChange={(e) => setRatio(+e.target.value)}
-                        className="form-range mt-1 block w-full rounded-md border-stone-100 focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className=" accent-emerald-500 mt-1 block w-full rounded-md  border-stone-100 focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm"
                         min="0"
                         max="100"
                         id="erc-20-ratio"
@@ -157,7 +158,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="erc-20-address"
                         id="erc-20-address"
-                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-4">
@@ -178,7 +179,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="erc-20-price"
                         id="erc-20-price"
-                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm"
                       />
                     </div>
 
@@ -200,7 +201,7 @@ const CreateOpportunity: NextPage = () => {
                         }
                         name="loan-incentive"
                         id="loan-incentive"
-                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm"
+                        className="m-1 block w-full rounded-md border-stone-100 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -209,7 +210,7 @@ const CreateOpportunity: NextPage = () => {
                   <button
                     type="button"
                     onClick={handlePostOpportunityEvent}
-                    className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                    className="inline-flex justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                   >
                     Validate
                   </button>
@@ -218,7 +219,7 @@ const CreateOpportunity: NextPage = () => {
             </div>
             <div className="mt-5 md:col-span-1">
               <div className="rounded-md bg-white p-5 text-stone-600 shadow-md sm:m-5 md:mx-12 md:px-12">
-                <h3 className="hidden overflow-hidden rounded-full bg-purple-200 p-2 text-center text-xs font-medium leading-6 text-purple-400 md:mx-12">
+                <h3 className="hidden overflow-hidden rounded-full bg-emerald-200 p-2 text-center text-xs font-medium leading-6 text-emerald-400 md:mx-12">
                   Project Galaxy Core Contract Gas Optimizations
                 </h3>
                 <div className="mt-3 flex flex-row items-center justify-center text-base  text-stone-600">
@@ -234,7 +235,7 @@ const CreateOpportunity: NextPage = () => {
                   />
                 </div>
                 <div className="w-full rounded-full bg-stone-100 font-bold">
-                  <div className="w-1/4 rounded-l-full bg-purple-600 p-0.5 text-center text-xs leading-none text-purple-100">
+                  <div className="w-1/4 rounded-l-full bg-emerald-600 p-0.5 text-center text-xs leading-none text-emerald-100">
                     25%
                   </div>
                 </div>
@@ -244,7 +245,7 @@ const CreateOpportunity: NextPage = () => {
                     Not started
                   </span>
                 </div>
-                <div className="mt-6 flex flex-row items-center justify-around text-sm text-purple-600">
+                <div className="mt-6 flex flex-row items-center justify-around text-sm text-emerald-600">
                   <span className="w-40 text-center">
                     Loan opportunity: $2400
                   </span>
@@ -252,7 +253,7 @@ const CreateOpportunity: NextPage = () => {
                 </div>
 
                 <div className="mt-6 hidden flex-row items-center justify-around text-sm">
-                  <button className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                  <button className="inline-flex justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
                     Sponsor opportunity
                   </button>
                 </div>

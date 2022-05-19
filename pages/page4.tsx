@@ -50,7 +50,7 @@ const CallContract: NextPage<Props> = ({ message }: { message: string }) => {
         <button
           disabled={isLoading}
           onClick={() => write({ args: greeting })}
-          className="rounded border-0 bg-blue-500 py-2 text-lg text-white hover:bg-pink-600 focus:outline-none"
+          className="rounded border-0 bg-emerald-500 py-2 text-lg text-white hover:bg-pink-600 focus:outline-none"
           style={{ gridColumn: '1/3' }}
         >
           Set Greeting
