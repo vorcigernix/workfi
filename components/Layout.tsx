@@ -18,7 +18,7 @@ export default function Layout({ children }: Props) {
 			{/* Navigation */}
 			<header className="body-font text-gray-600">
 				<div className="container mx-auto flex flex-col flex-wrap items-center p-5 md:flex-row">
-					<a className="title-font mb-4 flex items-center font-medium text-gray-900 md:mb-0">
+					<a className="title-font mb-4 flex items-center font-medium text-gray-900 md:mb-0" href='/'>
 						<svg width="256" height="64" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M12 24c0-3 1-5 4-5s5 2 5 5v16c0 6 4 9 8 9s9-3 9-9V23c0-2 3-4 5-4s5 2 5 5v16c0 6 4 9 9 9s9-3 9-9V23c0-2 2-4 5-4s5 2 5 5v16c0 13-9 18-18 18-6 0-11-1-15-5-3 4-8 5-13 5-9 0-19-6-19-18V24z"
