@@ -28,8 +28,8 @@ const OpportunityParticipation: NextPage = () => {
 			setOpportunity({
 				...opportunity,
 				stableRatio: ratio,
-				stableAmount: opportunity.bounty - opportunity.bounty * (ratio / 100),
-				erc20Amount: opportunity.bounty * (ratio / 100),
+				stableAmount:  opportunity.bounty * (ratio / 100),
+				erc20Amount: opportunity.bounty * (ratio / 50), //lazy me, e20 price is 0.5 so I hack it here
 			});
 		}
 	}
@@ -93,21 +93,21 @@ const OpportunityParticipation: NextPage = () => {
 								<div className="py-6">
 									<div className="grid grid-cols-4 gap-6">
 										<div className="col-span-6">
-											<h1 className="text-2xl font-bold leading-7 text-stone-600">Invest ${opportunity.stableAmount}</h1>
+											<h1 className="text-2xl font-bold leading-7 text-stone-600">
+												Invest ${opportunity.stableAmount}
+											</h1>
 										</div>
 										<div className="col-span-6 sm:col-span-4">
-											<ul className=" text-stone-600 pl-6 mb-6 list-disc  space-y-2">
+											<ul className=" mb-6 list-disc space-y-2 pl-6  text-stone-600">
 												Provide stablecoin for this bounty:
-												<li >
+												<li>
 													You buy native token with a discount you get rewarded during the duration of the bounty
 													(yield)
 												</li>
-												<li>
-													If the bounty is cancelled, you get your stable coins back and the yield for the period
-												</li>
+												<li>If the bounty is cancelled, you get your stable coins back and the yield for the period</li>
 											</ul>
 											<label htmlFor="erc-20-ratio" className="block text-sm font-medium text-stone-600">
-												Receive {opportunity.erc20Amount} ERC Tokens
+												Receive {opportunity.stableAmount * 2} ERC Tokens
 											</label>
 											<input
 												type="range"
@@ -118,6 +118,16 @@ const OpportunityParticipation: NextPage = () => {
 												max="100"
 												id="erc-20-ratio"
 											/>
+										</div>
+										<div className="col-span-6 sm:col-span-4">
+											<ul className=" mb-6 list-disc space-y-2 pl-6  text-stone-600">
+												<li>ERC20 token price: $0.5</li>
+												<li>Additional rewards for the bounty period : 40% APR</li>
+												<li>
+													Maximum lock period: 40 days.The Total maximum duration is the work period + 15% prior and 15%
+													after the work period.
+												</li>
+											</ul>
 										</div>
 									</div>
 								</div>
