@@ -107,7 +107,7 @@ const OpportunityParticipation: NextPage = () => {
 												</li>
 											</ul>
 											<label htmlFor="erc-20-ratio" className="block text-sm font-medium text-stone-600">
-												Receive 1200 ERC Tokens
+												Receive {opportunity.erc20Amount} ERC Tokens
 											</label>
 											<input
 												type="range"
@@ -139,7 +139,7 @@ const OpportunityParticipation: NextPage = () => {
 								</h3>
 								<div className="mt-3 flex flex-row items-center justify-center text-base  text-stone-600">
 									<span>Bounty</span>
-									<span className=" ml-4 font-bold">$3000</span>
+									<span className=" ml-4 font-bold">${opportunity.bounty}</span>
 								</div>
 								<div className="mt-3 flex flex-row items-center justify-around text-base text-stone-600">
 									<img src="./dai.svg" alt="dai" className="m-4 h-6 w-6" />
