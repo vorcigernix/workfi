@@ -10,10 +10,11 @@ import { contractAddressMumbai } from '../config';
 //Opportunity Creation Form
 // This page is used to create a new opportunity, bounty data are mocked from the mockData.ts file
 const CreateOpportunity: NextPage = () => {
+	const [openDialog, setOpenDialog] = useState(false)
 	const [opportunity, setOpportunity] = useState<LoanOpportunity>({
 		idBounty: defaultBounty.id,
 		bounty: defaultBounty.bounty,
-		stableAddress: '',
+		stableAddress: '0x6b175474e89094c44da98b954eedeac495271d0f',
 		stableAmount: 0,
 		erc20Address: '',
 		erc20Amount: 0,
@@ -43,13 +44,7 @@ const CreateOpportunity: NextPage = () => {
 	);
 
 	function handlePostOpportunityEvent() {
-    const stablePay = opportunity.stableAmount;
-    const nativePay = opportunity.erc20Amount;
-    const exchangeRate = opportunity.erc20Price;
-    const nativeToken = opportunity.erc20Address;
-    let deadline = new Date();
-    deadline.setDate(deadline.getDate() + 40*24*60*60*1000 * 0.15)	// 40 days
-    write({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
+		setOpenDialog(true);
 	}
 
 	return (
@@ -239,7 +234,17 @@ const CreateOpportunity: NextPage = () => {
 							</div>
 						</div>
 						<div className="mt-12 md:col-span-2">
-							<Approve message={'ERC 20'} maxcost={2000} erc20={1800} dai={200} lock={20} />
+							<Approve
+								message={'ERC 20'}
+								maxcost={2000}
+								erc20={1800}
+								dai={200}
+								lock={20}
+								open={openDialog}
+								setOpen={setOpenDialog}
+								opportunity={opportunity}
+								callSmartContract={write}
+							 />
 						</div>
 					</div>
 				</div>

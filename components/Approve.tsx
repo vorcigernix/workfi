@@ -1,6 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { useState, useRef, Fragment } from 'react'
+import { useRef, Fragment } from 'react'
 import { ShieldCheckIcon } from '@heroicons/react/outline'
+import { LoanOpportunity } from '../pages/api/data/LoanOpportunity'
+import { WriteContractConfig } from '@wagmi/core';
 
 type Props = {
   message: string
@@ -8,11 +10,26 @@ type Props = {
   erc20: number
   dai: number
   lock: number
+  open: boolean
+  setOpen: (b:boolean) => void
+  opportunity: LoanOpportunity
+  callSmartContract: (overrideConfig?: WriteContractConfig | undefined) => void
 }
 
-export function Approve({ message, maxcost, erc20, dai, lock }: Props) {
-  const [open, setOpen] = useState(true)
-  const cancelButtonRef = useRef(null)
+export function Approve({ message, maxcost, erc20, dai, lock, open, setOpen, opportunity, callSmartContract }: Props) {
+  const cancelButtonRef = useRef(null);
+
+  function handleApproveOpportunity() {
+    setOpen(false)
+		const stablePay = opportunity.stableAmount;
+		const nativePay = opportunity.erc20Amount;
+		const exchangeRate = opportunity.erc20Price;
+		const nativeToken = opportunity.erc20Address;
+		let deadline = new Date();
+		deadline.setDate(deadline.getDate())
+		deadline = new Date(deadline.getTime() + 40*24*60*60*1000 * 1.15)	// 40 days  
+		callSmartContract({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
+  }
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -110,7 +127,7 @@ export function Approve({ message, maxcost, erc20, dai, lock }: Props) {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-emerald-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-emerald-700  sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={() => setOpen(false)}
+                    onClick={handleApproveOpportunity}
                   >
                     Approve {message}
                   </button>
