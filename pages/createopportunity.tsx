@@ -1,7 +1,7 @@
 import type { NextPage } from 'next/types';
 import type { LoanOpportunity } from './api/data/LoanOpportunity';
 import { defaultBounty } from './api/data/mockData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Approve } from '../components/Approve';
 import DummyWorkFi from '../artifacts/contracts/DummyWorkFi.sol/DummyWorkFi.json';
 import { useContractWrite } from 'wagmi';
@@ -46,6 +46,22 @@ const CreateOpportunity: NextPage = () => {
 	function handlePostOpportunityEvent() {
 		setOpenDialog(true);
 	}
+
+	const [callSmartContract, setCallSmartContract] = useState(() => {});
+	useEffect(()=>{
+		setCallSmartContract(() => {
+			return () => {
+				const stablePay = opportunity.stableAmount;
+				const nativePay = opportunity.erc20Amount;
+				const exchangeRate = opportunity.erc20Price;
+				const nativeToken = opportunity.erc20Address;
+				let deadline = new Date();
+				deadline.setDate(deadline.getDate())
+				deadline = new Date(deadline.getTime() + 40*24*60*60*1000 * 1.15)	// 40 days  
+				write({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
+			}
+		})
+	}, [opportunity, write])
 
 	return (
 		<div className="min-h-screen">
@@ -243,7 +259,7 @@ const CreateOpportunity: NextPage = () => {
 								open={openDialog}
 								setOpen={setOpenDialog}
 								opportunity={opportunity}
-								callSmartContract={write}
+								callSmartContract={callSmartContract}
 							 />
 						</div>
 					</div>

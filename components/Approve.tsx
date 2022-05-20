@@ -16,19 +16,12 @@ type Props = {
   callSmartContract: (overrideConfig?: WriteContractConfig | undefined) => void
 }
 
-export function Approve({ message, maxcost, erc20, dai, lock, open, setOpen, opportunity, callSmartContract }: Props) {
+export function Approve({ message, maxcost, erc20, dai, lock, open, setOpen, callSmartContract }: Props) {
   const cancelButtonRef = useRef(null);
 
   function handleApproveOpportunity() {
     setOpen(false)
-		const stablePay = opportunity.stableAmount;
-		const nativePay = opportunity.erc20Amount;
-		const exchangeRate = opportunity.erc20Price;
-		const nativeToken = opportunity.erc20Address;
-		let deadline = new Date();
-		deadline.setDate(deadline.getDate())
-		deadline = new Date(deadline.getTime() + 40*24*60*60*1000 * 1.15)	// 40 days  
-		callSmartContract({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
+    callSmartContract()
   }
 
   return (

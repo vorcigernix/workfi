@@ -1,7 +1,7 @@
 import type { NextPage } from 'next/types';
 import type { LoanOpportunity } from './api/data/LoanOpportunity';
 import { defaultBounty } from './api/data/mockData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Approve } from '../components/Approve';
 import DummyWorkFi from '../artifacts/contracts/DummyWorkFi.sol/DummyWorkFi.json';
 import { useContractWrite } from 'wagmi';
@@ -21,7 +21,7 @@ const OpportunityParticipation: NextPage = () => {
 		yield: 0,
 		stableRatio: 20,
 	} as LoanOpportunity);
-	const [ackPhase, setAckPhase] = useState(0);
+	const [openDialog, setOpenDialog] = useState(false);
 
 	function setRatio(ratio: number) {
 		if (ratio > 0) {
@@ -33,6 +33,26 @@ const OpportunityParticipation: NextPage = () => {
 			});
 		}
 	}
+
+	const { write, data, error, isLoading, isError, isSuccess } = useContractWrite(
+		{
+			addressOrName: contractAddressMumbai,
+			contractInterface: DummyWorkFi.abi,
+		},
+		'invest'
+	);
+
+	const [callSmartContract, setCallSmartContract] = useState(() => {});
+	useEffect(()=>{
+		setCallSmartContract(() => {
+			return () => {
+				const bountyId = opportunity.idBounty;
+				const stableAmount = opportunity.stableAmount;
+				write({ args: [bountyId, stableAmount] })
+			}
+		})
+	}, [opportunity, write])
+
 	return (
 		<div className="min-h-screen">
 			<section className="flex flex-col items-start justify-start py-2">
@@ -134,12 +154,15 @@ const OpportunityParticipation: NextPage = () => {
 								<div className="px-4 py-3 text-right sm:px-6">
 									<button
 										type="button"
-										onClick={() => setAckPhase(1)}
+										onClick={() => setOpenDialog(true)}
 										className="inline-flex justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
 										Validate
 									</button>
 								</div>
-								<div className="px-4 py-3 text-right sm:px-6">//here goes the etherscan link</div>
+								<div className="px-4 py-3 text-right sm:px-6">
+									{isError && <div>{error?.message}</div>}
+									{isSuccess && <div><a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>See transaction</a></div>}
+								</div>
 							</div>
 						</div>
 						<div className="mt-5 md:col-span-1">
@@ -179,7 +202,16 @@ const OpportunityParticipation: NextPage = () => {
 							</div>
 						</div>
 						<div className="mt-12 md:col-span-2">
-							{ackPhase > 0 && <Approve message={'ERC 20'} maxcost={2000} erc20={1800} dai={200} lock={20} />}
+							{<Approve
+								message={'ERC 20'}
+								maxcost={2000}
+								erc20={1800}
+								dai={200}
+								lock={20}
+								open={openDialog}
+								setOpen={setOpenDialog}
+								callSmartContract={callSmartContract}
+							/>}
 						</div>
 					</div>
 				</div>
