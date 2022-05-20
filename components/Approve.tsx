@@ -12,7 +12,6 @@ type Props = {
   lock: number
   open: boolean
   setOpen: (b:boolean) => void
-  opportunity: LoanOpportunity
   callSmartContract: (overrideConfig?: WriteContractConfig | undefined) => void
 }
 
