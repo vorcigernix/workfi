@@ -15,19 +15,6 @@ async function main() {
 	// await hre.run('compile');
 
 	// We get the contract to deploy
-	const Greeter = await hre.ethers.getContractFactory('Greeter');
-	const greeter = await Greeter.deploy('Hello, Hardhat!');
-
-	await greeter.deployed();
-
-	console.log('Greeter deployed to:', greeter.address);
-	fs.writeFileSync(
-		'./config.js',
-		`
-  export const contractAddress = "${greeter.address}"
-  export const ownerAddress = "${greeter.signer.address}"
-  `
-	);
 
 	const WorkFi = await hre.ethers.getContractFactory('IWorkFi');
 	const workfi = await WorkFi.deploy();
@@ -35,13 +22,6 @@ async function main() {
 	await workfi.deployed();
 
 	console.log('Workfi deployed to:', workfi.address);
-	fs.writeFileSync(
-		'./config.js',
-		`
-export const workficontractAddress = "${workfi.address}"
-export const workfiownerAddress = "${workfi.signer.address}"
-`
-	);
 
 	const Dummy = await hre.ethers.getContractFactory('DummyWorkFi');
 	const dummy = await Dummy.deploy();
@@ -52,8 +32,10 @@ export const workfiownerAddress = "${workfi.signer.address}"
 	fs.writeFileSync(
 		'./config.js',
 		`
-export const dummycontractAddress = "${dummy.address}"
-export const dummyownerAddress = "${dummy.signer.address}"
+		export const workficontractAddress = "${workfi.address}"
+		export const workfiownerAddress = "${workfi.signer.address}"
+		export const dummycontractAddress = "${dummy.address}"
+		export const dummyownerAddress = "${dummy.signer.address}"
 `
 	);
 }
