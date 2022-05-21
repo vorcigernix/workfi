@@ -1,8 +1,8 @@
-import { useConnect, useDisconnect } from 'wagmi';
+import { useConnect, useDisconnect, useNetwork } from 'wagmi';
 
 import { useIsMounted } from '../components/hooks/useIsMounted';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 type Props = {
 	children: JSX.Element | JSX.Element[];
@@ -10,15 +10,22 @@ type Props = {
 
 export default function Layout({ children }: Props) {
 	const isMounted = useIsMounted();
-	const { activeConnector, connect, connectors, error, isConnecting, pendingConnector } = useConnect();
+	const { activeConnector, connect, connectors, isConnecting, pendingConnector } = useConnect();
 	const { disconnect } = useDisconnect();
 	const [connectDialog, setConnectDialog] = useState(false);
+	const network = useNetwork({
+		chainId: 80001,
+	});
+	useEffect(() => {
+		network.activeChain?.id != 80001 && network.switchNetwork?.(80001);
+	}, [network]);
+
 	return (
 		<div className="min-h-full bg-stone-50">
 			{/* Navigation */}
 			<header className="body-font text-gray-600">
 				<div className="container mx-auto flex flex-col flex-wrap items-center p-5 md:flex-row">
-					<a className="title-font mb-4 flex items-center font-medium text-gray-900 md:mb-0" href='/'>
+					<a className="title-font mb-4 flex items-center font-medium text-gray-900 md:mb-0" href="/">
 						<svg width="256" height="64" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M12 24c0-3 1-5 4-5s5 2 5 5v16c0 6 4 9 8 9s9-3 9-9V23c0-2 3-4 5-4s5 2 5 5v16c0 6 4 9 9 9s9-3 9-9V23c0-2 2-4 5-4s5 2 5 5v16c0 13-9 18-18 18-6 0-11-1-15-5-3 4-8 5-13 5-9 0-19-6-19-18V24z"
@@ -42,26 +49,28 @@ export default function Layout({ children }: Props) {
 						<Link href={`/createopportunity`}>
 							<a className="mr-5 font-bold text-amber-400 hover:text-yellow-600">Opportunities</a>
 						</Link>
-						<Link href={`/dashboard`}>
+						<Link href={`/manageMySponsorship`}>
 							<a className="mr-5 font-bold text-emerald-400 hover:text-emerald-600">Dashboard</a>
 						</Link>
 					</nav>
 					{activeConnector ? (
-						<button
-							className="mt-6 inline-flex items-center justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 font-bold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 md:mt-0"
-							onClick={() => disconnect()}>
-							Disconnect
-							<svg
-								fill="none"
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								className="ml-1 h-4 w-4"
-								viewBox="0 0 24 24">
-								<path d="M5 12h14M12 5l7 7-7 7"></path>
-							</svg>
-						</button>
+						<>
+							<button
+								className="mt-6 inline-flex items-center justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 font-bold text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 md:mt-0"
+								onClick={() => disconnect()}>
+								Disconnect
+								<svg
+									fill="none"
+									stroke="currentColor"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									className="ml-1 h-4 w-4"
+									viewBox="0 0 24 24">
+									<path d="M5 12h14M12 5l7 7-7 7"></path>
+								</svg>
+							</button>
+						</>
 					) : (
 						isMounted && (
 							<div className="flex justify-center">
