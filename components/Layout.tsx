@@ -16,7 +16,7 @@ export default function Layout({ children }: Props) {
 	const network = useNetwork();
 	useEffect(() => {
 		network.activeChain?.id != 80001 && network.switchNetwork?.(80001);
-	}, [network]);
+	}, [network.activeChain?.id]);
 
 	return (
 		<div className="min-h-full bg-stone-50">
