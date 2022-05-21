@@ -13,9 +13,7 @@ export default function Layout({ children }: Props) {
 	const { activeConnector, connect, connectors, isConnecting, pendingConnector } = useConnect();
 	const { disconnect } = useDisconnect();
 	const [connectDialog, setConnectDialog] = useState(false);
-	const network = useNetwork({
-		chainId: 80001,
-	});
+	const network = useNetwork();
 	useEffect(() => {
 		network.activeChain?.id != 80001 && network.switchNetwork?.(80001);
 	}, [network]);
