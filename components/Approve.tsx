@@ -12,7 +12,7 @@ type Props = {
   lock: number
   open: boolean
   setOpen: (b:boolean) => void
-  callSmartContract: (overrideConfig?: WriteContractConfig | undefined) => void
+  callSmartContract: () => void
 }
 
 export function Approve({ message, maxcost, erc20, dai, lock, open, setOpen, callSmartContract }: Props) {

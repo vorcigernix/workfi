@@ -2,7 +2,7 @@ import type { NextPage } from 'next/types'
 import { GetServerSideProps } from 'next'
 import { ethers } from 'ethers'
 
-import { contractAddress } from '../config'
+import { contractAddressMumbai } from '../config'
 
 import Greeter from '../artifacts/contracts/Greeter.sol/Greeter.json'
 import { ChangeEvent, useState } from 'react'
@@ -18,7 +18,7 @@ const CallContract: NextPage<Props> = ({ message }: {message:string }) => {
   async function setNewGreetingHandler() {
     const _provider = new ethers.providers.Web3Provider(window.ethereum as any);
     const contract = new ethers.Contract(
-      contractAddress,
+      contractAddressMumbai,
       Greeter.abi,
       _provider.getSigner(0)
     );
@@ -56,7 +56,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
   }
 
-  const contract = new ethers.Contract(contractAddress, Greeter.abi, provider);
+  const contract = new ethers.Contract(contractAddressMumbai, Greeter.abi, provider);
   const data = await contract.greet();
   return {
     props: {
