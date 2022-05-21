@@ -47,7 +47,7 @@ const CreateOpportunity: NextPage = () => {
 		setOpenDialog(true);
 	}
 
-	const [callSmartContract, setCallSmartContract] = useState(() => {});
+	const [callSmartContract, setCallSmartContract] = useState<() => void>(() => {});
 	useEffect(()=>{
 		setCallSmartContract(() => {
 			return () => {
@@ -258,7 +258,6 @@ const CreateOpportunity: NextPage = () => {
 								lock={20}
 								open={openDialog}
 								setOpen={setOpenDialog}
-								opportunity={opportunity}
 								callSmartContract={callSmartContract}
 							 />
 						</div>
