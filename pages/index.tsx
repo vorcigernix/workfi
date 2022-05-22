@@ -24,7 +24,43 @@ const Home: NextPage = () => {
             WorkFi
           </a>
         </h1>
+        <div className="my-5  grid rounded-lg bg-white py-5 px-20 shadow-lg">
+        <div className="text-xl font-bold" style={{ marginTop: '1rem' }}>
+          Easily create a sponsorship for your bounties
+        </div>
+        <div className="text-stone-500" style={{ marginBottom: '2rem' }}>
+          Ise a partner job and get your sponsorship oppurtunity running now
+        </div>
+        <div className="grid grid-cols-3 gap-6">
+          <div className="grid">
+            <span className="font-bold">1. Choose a job board</span>
+            <span className="text-stone-500">
+              WorkFi works with the most trustfull onchian job boards.
+            </span>
+            <div className="flex gap-3">
+              <img src="image 5.png" className="h-10 w-11" />
+              <img src="image 6.png" className="h-10 w-11" />
+              <img src="image 7.png" className="h-10 w-11" />
+            </div>
+          </div>
+          <div className="grid">
+            <span className="font-bold">2. Create your sponsorship</span>
+            <span className="text-stone-500">
+              Simply indicate your ERC20 tokens, it's price and the incentive
+              you're willing to give to your investors.
+            </span>
+          </div>
+          <div className="grid">
+            <span className="font-bold">3. And that's it</span>
+            <span className="text-stone-500">
+              Manage your bounties in the job board, all the payment flow with
+              your workers and your investors is automated.
+            </span>
+          </div>
+        </div>
+      </div>
       </main>
+
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a
