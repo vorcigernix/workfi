@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 						WorkFi
 					</a>
 				</h1>
-				<div className="my-5 rounded-lg bg-white py-5 shadow-lg md:my-20 md:px-20">
+				<div className="my-5 rounded-lg bg-white py-5 px-4 shadow-lg md:my-20 md:px-20">
 					<div className="-m-4 flex flex-wrap">
 						<div className="mb-6 p-4 lg:mb-0 lg:w-1/3">
 							<div className="h-full text-center">
@@ -35,10 +35,16 @@ const Home: NextPage = () => {
 								<span className="mt-6 inline-block h-1 w-10 rounded bg-emerald-500"></span>
 								<p className="my-4 leading-relaxed">WorkFi works with the most trustfull onchain job boards </p>
 
-								<div className="flex justify-center gap-3">
+								<div className=" flex justify-center gap-3">
 									<img src="image 5.png" className="h-12 w-12 rounded-full border-4 p-1" />
 									<img src="image 6.png" className="h-12 w-12 rounded-full border-4 p-1" />
 									<img src="image 7.png" className="h-12 w-12 rounded-full border-4 p-1" />
+								</div>
+
+								<div className=" hidden justify-center gap-3 font-bold ">
+									<span className=" rounded-full bg-amber-500 p-2 text-white">Gitcoin</span>
+									<span className=" rounded-full bg-lime-500 p-2 text-white">Dework</span>
+									<span className=" rounded-full bg-emerald-500 p-2 text-white">Mayflower</span>
 								</div>
 							</div>
 						</div>
