@@ -36,9 +36,9 @@ const Home: NextPage = () => {
 								<p className="my-4 leading-relaxed">WorkFi works with the most trustfull onchain job boards </p>
 
 								<div className="flex justify-center gap-3">
-									<img src="image 5.png" className="h-10 w-11" />
-									<img src="image 6.png" className="h-10 w-11" />
-									<img src="image 7.png" className="h-10 w-11" />
+									<img src="image 5.png" className="h-12 w-12 rounded-full border-4 p-1" />
+									<img src="image 6.png" className="h-12 w-12 rounded-full border-4 p-1" />
+									<img src="image 7.png" className="h-12 w-12 rounded-full border-4 p-1" />
 								</div>
 							</div>
 						</div>
