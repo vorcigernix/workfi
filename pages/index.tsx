@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 					<div className="-m-4 flex flex-wrap">
 						<div className="mb-6 p-4 lg:mb-0 lg:w-1/3">
 							<div className="h-full text-center">
-								<div className="my-8 inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-gray-200 bg-emerald-100 text-3xl">
+								<div className="my-8 inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-100 text-3xl">
 									1
 								</div>
 								<p className="font-bold leading-relaxed">Choose a job board</p>
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
 						</div>
 						<div className="mb-6 p-4 lg:mb-0 lg:w-1/3">
 							<div className="h-full text-center">
-								<div className="my-8 inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-gray-200 bg-emerald-200 text-3xl">
+								<div className="my-8 inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-200 text-3xl">
 									2
 								</div>
 								<p className="font-bold leading-relaxed">Create a sponsorship</p>
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
 						</div>
 						<div className="mb-6 p-4 lg:mb-0 lg:w-1/3">
 							<div className="h-full text-center">
-								<div className="my-8 inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-gray-200 bg-emerald-300 text-3xl">
+								<div className="my-8 inline-flex h-16 w-16 items-center justify-center rounded-full border-2 border-emerald-500 bg-emerald-300 text-3xl">
 									3
 								</div>
 								<p className="font-bold leading-relaxed">And that's it</p>
