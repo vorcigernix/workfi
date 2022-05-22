@@ -10,7 +10,7 @@ import { contractAddressMumbai } from '../config';
 //Opportunity Creation Form
 // This page is used to create a new opportunity, bounty data are mocked from the mockData.ts file
 const CreateOpportunity: NextPage = () => {
-	const [openDialog, setOpenDialog] = useState(false)
+	const [openDialog, setOpenDialog] = useState(false);
 	const [opportunity, setOpportunity] = useState<LoanOpportunity>({
 		idBounty: defaultBounty.id,
 		bounty: defaultBounty.bounty,
@@ -35,7 +35,7 @@ const CreateOpportunity: NextPage = () => {
 		}
 	}
 
-  const { write, data, error, isLoading, isError, isSuccess } = useContractWrite(
+	const { write, data, error, isLoading, isError, isSuccess } = useContractWrite(
 		{
 			addressOrName: contractAddressMumbai,
 			contractInterface: DummyWorkFi.abi,
@@ -48,7 +48,7 @@ const CreateOpportunity: NextPage = () => {
 	}
 
 	const [callSmartContract, setCallSmartContract] = useState<() => void>(() => {});
-	useEffect(()=>{
+	useEffect(() => {
 		setCallSmartContract(() => {
 			return () => {
 				const stablePay = opportunity.stableAmount;
@@ -56,18 +56,18 @@ const CreateOpportunity: NextPage = () => {
 				const exchangeRate = opportunity.erc20Price;
 				const nativeToken = opportunity.erc20Address;
 				let deadline = new Date();
-				deadline.setDate(deadline.getDate())
-				deadline = new Date(deadline.getTime() + 40*24*60*60*1000 * 1.15)	// 40 days  
-				write({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime()/1000)] })
-			}
-		})
-	}, [opportunity, write])
+				deadline.setDate(deadline.getDate());
+				deadline = new Date(deadline.getTime() + 40 * 24 * 60 * 60 * 1000 * 1.15); // 40 days
+				write({ args: [stablePay, nativePay, exchangeRate, nativeToken, Math.round(deadline.getTime() / 1000)] });
+			};
+		});
+	}, [opportunity, write]);
 
 	return (
 		<div className="min-h-screen">
 			<section className="flex flex-col items-start justify-start py-2">
 				<div>
-					<h1 className="mb-2 text-3xl font-bold leading-9">Project Galaxy Core Contract Gas Optimizations</h1>
+					<h1 className="mb-2 text-3xl font-bold leading-9">{defaultBounty.description}</h1>
 					<div className="mt-5 flex flex-col gap-8 text-sm font-normal leading-5 text-stone-600 md:flex-row">
 						<span className="flex flex-row items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -78,7 +78,7 @@ const CreateOpportunity: NextPage = () => {
 								/>
 								<path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
 							</svg>
-							30 Days
+							{defaultBounty.duration} Days
 						</span>
 						<span className="flex flex-row items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -89,7 +89,7 @@ const CreateOpportunity: NextPage = () => {
 									clipRule="evenodd"
 								/>
 							</svg>
-							$3000
+							${opportunity.bounty}
 						</span>
 						<span className="flex flex-row items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -109,7 +109,7 @@ const CreateOpportunity: NextPage = () => {
 									clipRule="evenodd"
 								/>
 							</svg>
-							Project Galaxy HQ
+							{defaultBounty.organization}
 						</span>
 					</div>
 				</div>
@@ -164,7 +164,9 @@ const CreateOpportunity: NextPage = () => {
 												ERC20 Price (USD based)
 											</label>
 											<input
-												type="text"
+												type="number"
+												step="1"
+												min=""
 												value={opportunity.erc20Price}
 												onChange={(e) =>
 													setOpportunity({
@@ -202,21 +204,24 @@ const CreateOpportunity: NextPage = () => {
 									<button
 										type="button"
 										onClick={handlePostOpportunityEvent}
-										className="inline-flex justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-									>
+										className="inline-flex justify-center rounded-md border border-transparent bg-emerald-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
 										Validate
 									</button>
 								</div>
 								<div className="px-4 py-3 text-right sm:px-6">
 									{isError && <div>{error?.message}</div>}
-									{isSuccess && <div><a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>See transaction</a></div>}
+									{isSuccess && (
+										<div>
+											<a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>See transaction</a>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
 						<div className="mt-5 md:col-span-1">
 							<div className="rounded-md bg-white p-5 text-stone-600 shadow-md sm:m-5 md:mx-12 md:px-12">
 								<h3 className="hidden overflow-hidden rounded-full bg-emerald-200 p-2 text-center text-xs font-medium leading-6 text-emerald-400 md:mx-12">
-									Project Galaxy Core Contract Gas Optimizations
+									{defaultBounty.description}
 								</h3>
 								<div className="mt-3 flex flex-row items-center justify-center text-base  text-stone-600">
 									<span>Bounty</span>
@@ -259,7 +264,7 @@ const CreateOpportunity: NextPage = () => {
 								open={openDialog}
 								setOpen={setOpenDialog}
 								callSmartContract={callSmartContract}
-							 />
+							/>
 						</div>
 					</div>
 				</div>

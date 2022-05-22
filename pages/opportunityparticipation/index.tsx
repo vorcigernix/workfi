@@ -58,7 +58,7 @@ const OpportunityParticipation: NextPage = () => {
 		<div className="min-h-screen">
 			<section className="flex flex-col items-start justify-start py-2">
 				<div>
-					<h1 className="mb-2 text-3xl font-bold leading-9">Project Galaxy Core Contract Gas Optimizations</h1>
+					<h1 className="mb-2 text-3xl font-bold leading-9">{defaultBounty.description}</h1>
 					<div className="mt-5 flex flex-col gap-8 text-sm font-normal leading-5 text-stone-600 md:flex-row">
 						<span className="flex flex-row items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -69,7 +69,7 @@ const OpportunityParticipation: NextPage = () => {
 								/>
 								<path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
 							</svg>
-							30 Days
+							{defaultBounty.duration} Days
 						</span>
 						<span className="flex flex-row items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -100,7 +100,7 @@ const OpportunityParticipation: NextPage = () => {
 									clipRule="evenodd"
 								/>
 							</svg>
-							Project Galaxy HQ
+							{defaultBounty.organization}
 						</span>
 					</div>
 				</div>
@@ -169,7 +169,7 @@ const OpportunityParticipation: NextPage = () => {
 						<div className="mt-5 md:col-span-1">
 							<div className="rounded-md bg-white p-5 text-stone-600 shadow-md sm:m-5 md:mx-12 md:px-12">
 								<h3 className="hidden overflow-hidden rounded-full bg-emerald-200 p-2 text-center text-xs font-medium leading-6 text-emerald-400 md:mx-12">
-									Project Galaxy Core Contract Gas Optimizations
+									{defaultBounty.description}
 								</h3>
 								<div className="mt-3 flex flex-row items-center justify-center text-base  text-stone-600">
 									<span>Bounty</span>

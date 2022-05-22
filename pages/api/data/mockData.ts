@@ -5,10 +5,10 @@ import { LoanInvestor } from './LoanInvestor'
 export const defaultBounty: Bounty = {
   id: 0,
   label: 'work',
-  organization: 'Crypto Jobs',
-  description: 'Special task needed to bring product to life',
+  organization: 'Project Galaxy HQ',
+  description: 'Project Galaxy Core Contract Gas Optimizations',
   duration: 30,
-  bounty: 1000,
+  bounty: 3000,
   recruiter: '0xd240A74c8766cbe9Fc0ba2B242C089aAE164D5dF', //zoz.eth ;.)
   postDate: new Date(),
   startDate: new Date(),
